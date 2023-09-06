@@ -1,0 +1,17 @@
+FROM maven:3.8.5-openjdk-17-slim as builder
+
+# 设置工作目录
+WORKDIR /app
+
+# 复制文件到工作目录
+
+COPY target/DockerFileDemo-0.0.1-SNAPSHOT.jar /app
+
+# 构建镜像时执行的脚本
+# RUN echo building application
+# RUN mvn package -DskipTests
+# RUN echo rename file to dockerdemo.jar
+# RUN mv /app/target/DockerFileDemo-0.0.1-SNAPSHOT.jar /app/target/dockerdemo.jar
+
+# 启动镜像执行的脚本
+CMD ["java", "-jar", "/app/DockerFileDemo-0.0.1-SNAPSHOT.jar"]
